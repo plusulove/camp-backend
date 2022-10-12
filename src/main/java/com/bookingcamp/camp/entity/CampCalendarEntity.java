@@ -17,10 +17,10 @@ public class CampCalendarEntity {
     private String camp_name;
 
     @Column
-    private Integer room_c;
+    private Number room_c;
 
     @Column
-    private Integer alloc_c;
+    private Number alloc_c;
 
     @Column
     private String close_yn;

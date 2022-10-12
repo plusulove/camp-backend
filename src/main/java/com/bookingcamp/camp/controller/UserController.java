@@ -14,53 +14,48 @@ import javax.persistence.PersistenceContext;
 @RequiredArgsConstructor
 @RequestMapping("/test")
 public class UserController {
-
     private final UserRepository UserRepository;
-
     @PersistenceContext
     private EntityManager entityManager;
-
     @GetMapping("search")
     public String searchAllMember() {
         return UserRepository.findAll().toString();
     }
-
-    @GetMapping("searchParamRepo")
-    public String searchParamRepoMember(@RequestParam(value = "name") String name) {
-        return UserRepository.searchParamRepo(name).toString();
+    @GetMapping("searchUser")
+    public String searchUser(@RequestParam(value = "name") String name) {
+        return UserRepository.searchUser(name).toString();
     }
 
 //    @GetMapping("update")
-//    public String updateMember(@RequestParam(value = "name") String name, @RequestParam(value = "age") int age) {
-//        if(UserInfo.findById(name).isEmpty()) { // 값 존재여부 확인
+//    public String updateMember(@RequestParam(value = "name") String name, @RequestParam(value = "password") String password) {
+//        if(UserRepository.findById(name).isEmpty()) { // 값 존재여부 확인
 //            return "입력한 " + name + "이 존재하지 않습니다";
 //        } else {
-//            UserInfo.save(User.builder().name(name).age(age).build());
-//            return name + "의 나이를 " + age + "로 변경 완료";
+//            UserRepository.save(User.builder().name(name).password(password).build());
+//            return name + "의 password 변경 완료";
 //        }
 //    }
 //
 //    @GetMapping("delete")
 //    public String deleteMember(@RequestParam(value = "name") String name) {
-//        if(UserInfo.findById(name).isEmpty()) { // 값 존재여부 확인
+//        if(UserRepository.findById(name).isEmpty()) { // 값 존재여부 확인
 //            return "입력한 " + name + "이 존재하지 않습니다";
 //        } else {
-//            UserInfo.delete(User entity = User.builder().name(name).build());
+//            UserRepository.delete(User entity = User.builder().name(name).build());
 //            return name + " 삭제 완료";
 //        }
 //    }
 //
 //    @GetMapping("insert")
-//    public String insertMember(@RequestParam(value = "name") String name, @RequestParam(value = "age") int age) {
-//        if(UserInfo.findById(name).isPresent()) {
+//    public String insertMember(@RequestParam(value = "name") String name, @RequestParam(value = "password") String password) {
+//        if(UserRepository.findById(name).isPresent()) {
 //            return "동일한 이름이 이미 있습니다";
 //        } else {
-//            User entity = User.builder().name(name).age(age).build();
-//            UserInfo.save(entity);
-//            return "이름 : " + name + " 나이 : " + age + "으로 추가 되었습니다";
+//            User entity = User.builder().name(name).password(password).build();
+//            UserRepository.save(entity);
+//            return "이름 : " + name + '이 추가 되었습니다";
 //        }
 //    }
-
 
 
 //    @GetMapping("searchParam")

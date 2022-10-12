@@ -10,12 +10,13 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, String> {
+    //private final EntityManager em;
 
-    @Query(value = "SELECT USER_ID, USER_PASS, USER_NAME FROM USER", nativeQuery=true)
+    @Query(value = "SELECT * FROM USER", nativeQuery=true)
     List<UserEntity> findAll();
     //http://localhost:8080/test/search
 
-    @Query(value = "SELECT USER_ID, USER_PASS, USER_NAME FROM USER WHERE NAME = :name", nativeQuery=true)
-    List<UserEntity> searchParamRepo(@Param("name") String name);
+    @Query(value = "SELECT USER_ID, USER_PASS, USER_NAME, REG_DT FROM USER WHERE NAME = :name", nativeQuery=true)
+    List<UserEntity> searchUser(@Param("name") String name);
     //http://localhost:8080/test/searchParamRepo?name=이보람
 }
